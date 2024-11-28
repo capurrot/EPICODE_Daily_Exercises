@@ -60,6 +60,11 @@ h1 {
     font-size: 1.7em;
     font-weight: 450;
 }
+h2 {
+    font-size: 1.1em;
+    font-weight: 450;
+    margin-top: 1.5em;
+}
 h4 {
     margin: 20px 0;
     color: #9fa09f;
@@ -186,6 +191,9 @@ footer {
     -moz-box-shadow: 2px 2px 5px 1px #7A7A7A; 
     box-shadow: 2px 2px 5px 1px #7A7A7A;
     color: white;
+}
+footer p {
+    margin-top: 0;
 }
 footer a {
     text-decoration: none;
