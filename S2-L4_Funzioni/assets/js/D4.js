@@ -41,11 +41,11 @@ console.log(crazyDiff(25));
 /* SCRIVI QUI LA TUA RISPOSTA */
 function boundary(n) {
     if (n >= 20 && n <= 100) {
-        return 'true';
+        return true;
     } else if (n === 400) {
-        return 'true';
+        return true;
     } else {
-        return '';
+        return false;
     }
 }
 console.log(boundary(25));
@@ -106,23 +106,34 @@ console.log(reverseString("Ciao sono molto felice grazie al corso EPICODE"));
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
-function upperFirst(ustr="") {
-    for (let i=0; i < ustr.length; i++) {
-        if (ustr[i] === " ") {
-            
-        }
+function upperFirst (ustr="") {
+    ustr = ustr.toLowerCase();
+    let strArr = ustr.split(" ");
+    let strUp1 = "";
+    for (let i = 0; i < strArr.length; i++) {
+        strUp1 += strArr[i].charAt(0).toUpperCase() + strArr[i].slice(1) + " ";
     }
+   return strUp1;
 }
-console.log(upperFirst("sono felicissimo di frequentare questo corso"));
+console.log(upperFirst("ciao sono molto felice di eSSere al corso di Epicode"));
 /* ESERCIZIO 9
  Scrivi una funzione di nome "cutString", che riceve come parametro una stringa. La funzione deve creare una nuova stringa senza il primo e l'ultimo carattere
  della stringa originale.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
-
+let cutString = (cstr) => cstr.slice(1, -1);
+console.log(cutString("Prima e ultima"));
 /* ESERCIZIO 10
  Scrivi una funzione di nome "giveMeRandom", che accetta come parametro un numero n e ritorna un'array contenente n numeri casuali inclusi tra 0 e 10.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+const myrArr = [];
+const giveMeRandom = function(n=0){
+    for (let i = 0; i < n; i++) {
+        myrArr.push(Math.round(Math.random() * 10)); 
+    }
+    return myrArr;
+}
+console.log(giveMeRandom(9));
