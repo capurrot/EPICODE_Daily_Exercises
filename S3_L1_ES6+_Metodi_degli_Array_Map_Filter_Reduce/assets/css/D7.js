@@ -11,18 +11,18 @@ str2 = `Vestibulum vitae placerat sem. In in interdum lacus, ac vulputate dolor.
         Suspendisse ac accumsan odio. Aenean dapibus libero ante, a maximus dui fermentum sit amet. Nulla nibh felis, ultricies sagittis 
         sollicitudin in, facilisis vel turpis. Mauris scelerisque suscipit libero ut porttitor. Proin interdum turpis nec facilisis malesuada. 
         Cras dolor erat, pellentesque sed sapien sed, placerat aliquet mi. Sed sem eros, semper eu finibus at, bibendum in ipsum`;
-const srtconcact = (a, b) => (a.slice(0, 2).concat(b.slice(-3))).toUpperCase();
+const srtconcact = (a, b) => a.slice(0, 2).concat(b.slice(-3)).toUpperCase();
 console.log(srtconcact(str1, str2));   
 /* ESERCIZIO 2 (for)
   Scrivi una funzione che torni un array di 10 elementi; ognuno di essi deve essere un valore random compreso tra 0 e 100 (incluso). */
   const myArr = [];
-  const myFuncArr = () => {
-  for (let i = 0; i < 10; i++) {
+  const myFuncArr = (n) => {
+  for (let i = 0; i < n; i++) {
     myArr.push(Math.round(Math.random() * 100));
   }
   return myArr;
 }
-console.log(myFuncArr());
+console.log(myFuncArr(20));
 /* ESERCIZIO 3 (filter)
   Scrivi una funzione per ricavare solamente i valori PARI da un array composto da soli valori numerici
 */
@@ -32,25 +32,37 @@ console.log(onlyPair(myArr));
   Scrivi una funzione per sommare i numeri contenuti in un array
 */
 let totSum = 0;
-myArr.forEach(num => totSum += num);
-console.log(totSum); 
+const myArrForEach = (xArr) => {
+  xArr.forEach(num => totSum += num);
+  return totSum;
+}
+console.log(myArrForEach(myArr)); 
 /* ESERCIZIO 5 (reduce)
   Scrivi una funzione per sommare i numeri contenuti in un array
 */
-
+const redSum = (xArr) => xArr.reduce((totale, corrente) => totale + corrente, 0);
+console.log(redSum(myArr)); 
 /* ESERCIZIO 6 (map)
   Scrivi una funzione che, dato un array di soli numeri e un numero n come parametri, ritorni un secondo array con tutti i valori del precedente incrementati di n
 */
-
+const myArrMap = (xArr, n) => xArr.map(num => num + n);
+console.log(myArrMap(myArr, 15));
 /* ESERCIZIO 7 (map)
   Scrivi una funzione che, dato un array di stringhe, ritorni un nuovo array contenente le lunghezze delle rispettive stringhe dell'array di partenza
   es.: ["EPICODE", "is", "great"] => [7, 2, 5]
 */
-
+const myLarrMap = (xArr) => xArr.map(n => n.length);
+console.log(myLarrMap(["EPICODE", "is", "great"]));
 /* ESERCIZIO 8 (forEach o for)
   Scrivi una funzione per creare un array contenente tutti i valori DISPARI da 1 a 99.
 */
+const myArrDis = [];
+const onlyDis = (xArr) => {
+  xArr.forEach(num => (num % 2 !== 0 ? myArrDis.push(num) : ''));
+  return myArrDis;
+}
 
+console.log(onlyDis(myArr));
 /* Questo array di film verrà usato negli esercizi a seguire. Non modificarlo e scorri oltre per riprendere gli esercizi :) */
 const movies = [
   {
@@ -170,27 +182,44 @@ const movies = [
 /* ESERCIZIO 9 (forEach)
   Scrivi una funzione per trovare il film più vecchio nell'array fornito.
 */
-
+const firstFilm = (xArr, yearfilm = {Year: 5000}) => {
+  xArr.forEach(film => (film.Year <= yearfilm.Year ? yearfilm = film : ''));
+  return yearfilm;
+}
+console.log(firstFilm(movies));
 /* ESERCIZIO 10
   Scrivi una funzione per ottenere il numero di film contenuti nell'array fornito.
 */
-
+const countFilm = (xArr, count=0) => {
+  xArr.forEach(film => count++)
+  return count;
+}
+console.log(countFilm(movies));
 /* ESERCIZIO 11 (map)
   Scrivi una funzione per creare un array con solamente i titoli dei film contenuti nell'array fornito.
 */
-
+const titleFilm = (xArr, myArrTitle=[]) => {
+  xArr.map(film => myArrTitle.push(film.Title));
+  return myArrTitle;
+}  
+console.log(titleFilm(movies));
 /* ESERCIZIO 12 (filter)
   Scrivi una funzione per ottenere dall'array fornito solamente i film usciti nel millennio corrente.
 */
-
+const onlyMill = (xArr) => xArr.filter(film => film.Year > 1999); 
+console.log(onlyMill(movies)); 
 /* ESERCIZIO 13 (reduce)
   Scrivi una funzione per calcolare la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array fornito.
 */
-
+const redSumF = (xArr) => xArr.reduce((totale, film) => totale + parseInt(film.Year), 0);
+console.log(redSumF(movies));
 /* ESERCIZIO 14 (find)
   Scrivi una funzione per ottenere dall'array fornito uno specifico film (la funzione riceve un imdbID come parametro).
 */
-
+const findMyFilm = (xArr, imdbID) => xArr.find(film => film.imdbID === imdbID)
+console.log(findMyFilm(movies, 'tt2395427'));
 /* ESERCIZIO 15 (findIndex)
   Scrivi una funzione per ottenere dall'array fornito l'indice del primo film uscito nell'anno fornito come parametro.
 */
+const findMyIndexFilm = (xArr, Year) => xArr.findIndex(film => film.Year === Year);
+console.log(findMyIndexFilm(movies, '2012'));
