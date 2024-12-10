@@ -194,29 +194,78 @@
     */
 
       const generateTable = function () {
-        let myObjTable = {immagine: '', }
-        let tableArea = document.querySelector('#tableArea')
-        let table = document.createElement('table')
-        
-      }
+        let tableArea = document.querySelector('#tableArea');
+        let table = document.createElement('table');
+        table.innerHTML = '<tr><th>Immagine</th><th>Nome Prodotto</th><th>Quantità</th><th>Prezzo</th></tr>';
 
+        tableArea.appendChild(table);
+      }
+      generateTable();
       /* ESERCIZIO 12
        Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
     */
+    let myObjTable = [{
+                          immagine: 'https://www.melavi.it/images/core/ninejcache/ninejproduct/ninejproduct_11-golden-delicious/golden-delicious_700x700.jpg', 
+                          nome_prodotto: 'Mela Golden Delicious', 
+                          quantita: '10', 
+                          prezzo: '0.75'
+                          },
+                          {
+                          immagine: 'https://www.melavi.it/images/core/ninejcache/ninejproduct/ninejproduct_10-red-delicious/red-delicious_700x700.jpg', 
+                          nome_prodotto: 'Mela Red Delicious', 
+                          quantita: '20', 
+                          prezzo: '0.35'
+                          },
+                          {
+                          immagine: 'https://www.melavi.it/images/core/ninejcache/ninejproduct/ninejproduct_9-gala/gala_700x700.jpg', 
+                          nome_prodotto: 'Mela Gala', 
+                          quantita: '15', 
+                          prezzo: '0.95'
+                          },
+                          {
+                          immagine: 'https://www.melavi.it/images/core/ninejcache/ninejproduct/ninejproduct_8-fuji/fuji_1_700x700.jpg', 
+                          nome_prodotto: 'Mela Fuji', 
+                          quantita: '5', 
+                          prezzo: '1.25'
+                          }];
 
-      const addRow = function () {}
-
+      const addRow = function () {
+        let table = document.querySelector('table');
+        for (const tri of myObjTable) {
+          let tr = document.createElement('tr');
+          let td = [];
+          td.push(`<img src="${tri.immagine}"/>`, tri.nome_prodotto, tri.quantita, tri.prezzo);
+          let tde;
+          for (const tdi of td) {
+              tde = document.createElement('td');
+              tde.innerHTML = tdi;
+              tr.appendChild(tde);
+          }
+          table.appendChild(tr);
+        }
+        let tableimg = document.querySelectorAll('table img');
+        tableimg.forEach(ele => ele.style.height = '200px');
+      }
+      addRow();
       /* ESERCIZIO 14
       Crea una funzione che nasconda le immagini della tabella quando eseguita
     */
 
-      const hideAllImages = function () {}
+      const hideAllImages = function () {
+        let tableimg = document.querySelectorAll('table img');
+        tableimg.forEach(ele => ele.style.display = 'none');
+      }
+      //hideAllImages(); Ho disattivato la funzione dopo averla verificata perchè  mi piace più con le immagini :-)
 
       /* EXTRA ESERCIZIO 15
       Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
     */
 
-      const changeColorWithRandom = function () {}
+      const changeColorWithRandom = function () {
+        let h2 = document.querySelector('#changeMyColor');
+        h2.onclick = () => h2.style.color = 'rgb(' + Math.round(Math.random() * 255) + ' ' + Math.round(Math.random() * 255) + ' ' + Math.round(Math.random() * 255) +')';
+      }
+      changeColorWithRandom();
     </script>
   </body>
 </html>
