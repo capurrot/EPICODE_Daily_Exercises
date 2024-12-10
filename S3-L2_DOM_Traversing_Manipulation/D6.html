@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      body div,
+      footer {
+        padding: 1rem;
+      }
+
+      footer {
+        padding: 1rem;
+        background-color: black;
+        color: white;
+      }
+
+      .myHeading {
+        color: #ff00d6;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <h1>Questo è il titolo della pagina</h1>
+      <h2>Questo è il sottotitolo della pagina</h2>
+    </div>
+
+    <div>
+      <hr />
+
+      <ul id="firstList">
+        <li>1st</li>
+        <li>2nd</li>
+        <li>3rd</li>
+      </ul>
+
+      <ul id="secondList">
+        <li>1st</li>
+        <li>2nd</li>
+        <li>3rd</li>
+      </ul>
+
+      <a href="https://epicode.com/it/">Questo link porta al sito di Epicode</a>
+
+      <div>
+        <p>Questo testo è un placeholder per gli esercizi</p>
+      </div>
+    </div>
+
+    <div>
+      <p>Anche questo testo è per gli esercizi</p>
+      <h2 id="changeMyColor" style="color: #ff00d6">
+        Apri questa pagina con VSCode per scoprire gli esercizi
+      </h2>
+    </div>
+
+    <div id="tableArea"></div>
+
+    <footer>
+      <h3>
+        DOM Manipulation is super
+        <a
+          href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents"
+          >AWESOME!</a
+        >
+      </h3>
+    </footer>
+    <script>
+      /* ESERCIZIO 1
+       Scrivi una funzione per cambiare il titolo della pagina in qualcos'altro
+    */
+      const changeTitle = function () {
+        let h1 = document.querySelector('h1');
+        h1.innerText = 'Questo è il titolo della pagina cambiato in Javascript';
+      }
+      changeTitle();
+
+      /* ESERCIZIO 2
+       Scrivi una funzione per aggiungere al titolo della pagina una classe "myHeading"
+    */
+
+      const addClassToTitle = function () {
+        let h1 = document.querySelector('h1');
+        h1.classList.add("myHeading");
+      }
+      addClassToTitle();
+
+      /* ESERCIZIO 3
+       Scrivi una funzione che cambi il testo dei p figli di un div
+      */
+      let pContentText = `Lorem Ipsum è un testo segnaposto utilizzato nel settore della tipografia e della stampa. 
+                          Lorem Ipsum è considerato il testo segnaposto standard sin dal sedicesimo secolo, quando un anonimo tipografo 
+                          prese una cassetta di caratteri e li assemblò per preparare un testo campione. È sopravvissuto non solo a più di 
+                          cinque secoli, ma anche al passaggio alla videoimpaginazione, pervenendoci sostanzialmente inalterato. 
+                          Fu reso popolare, negli anni ’60, con la diffusione dei fogli di caratteri trasferibili “Letraset”, 
+                          che contenevano passaggi del Lorem Ipsum, e più recentemente da software di impaginazione come Aldus 
+                          PageMaker, che includeva versioni del Lorem Ipsum.`;
+      const changePcontent = function () {
+        let pcontentAll = document.querySelectorAll('div > p');
+        pcontentAll.forEach(ele => ele.innerText = pContentText);
+      }
+      changePcontent();
+
+      /* ESERCIZIO 4
+       Scrivi una funzione che cambi la proprietà href di ogni link (tranne quello nel footer) con il valore https://www.google.com
+      */
+
+      const changeUrls = function () {
+        let urlChangedAll = document.querySelectorAll('a:not(footer a)');
+        urlChangedAll.forEach(ele => ele.href = "https://www.google.com");
+      }
+      changeUrls();
+
+      /* ESERCIZIO 5
+       Scrivi una funzione che aggiunga un nuovo elemento lista alla seconda lista non ordinata
+    */
+      const addToTheSecond = function () {
+        let secondList = document.querySelector('#secondList');
+        let li = document.createElement('li');
+        li.innerText = '4th';
+        secondList.appendChild(li);
+      }
+      addToTheSecond();
+
+      /* ESERCIZIO 6
+       Scrivi una funzione che aggiunga un paragrafo al primo div
+    */
+
+      const addParagraph = function () {
+        let firstDiv = document.querySelector('body > div');
+        let pfirstDiv = document.createElement('p');
+        pfirstDiv.innerText = pContentText;
+        firstDiv.appendChild(pfirstDiv);
+      }
+      addParagraph();
+
+      /* ESERCIZIO 7
+       Scrivi una funzione che faccia scomparire la prima lista non ordinata
+    */
+
+      const hideFirstUl = function () {
+        let firstUl = document.querySelector('#firstList');
+        firstUl.style.display = 'none';
+      }
+      hideFirstUl();
+
+      /* ESERCIZIO 8 
+       Scrivi una funzione che renda verde il background di ogni lista non ordinata
+      */
+
+      const paintItGreen = function () {
+        let listUl = document.querySelectorAll('ul');
+        listUl.forEach(ele => ele.style.backgroundColor = 'green');
+      }
+      paintItGreen();
+
+      /* ESERCIZIO 9
+       Scrivi una funzione che rimuova l'ultima lettera dall'h1 ogni volta che l'utente lo clicca
+      */
+      const makeItClickable = function () {
+        let h1 = document.querySelector('h1');
+        h1.onclick = () => h1.innerText = h1.innerText.slice(0, -1);
+      }  
+      makeItClickable();
+
+      /* ESERCIZIO 10
+       Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
+      */
+
+      const revealFooterLink = function () {
+        let footer = document.querySelector('footer');
+        let a = document.querySelector('footer a');
+        footer.onclick = () => alert(a.href);
+      } 
+      revealFooterLink();
+
+      /* ESERCIZIO 11
+       Crea una funzione che crei una tabella nell'elemento con id "tableArea". 
+       La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
+    */
+
+      const generateTable = function () {
+        let myObjTable = {immagine: '', }
+        let tableArea = document.querySelector('#tableArea')
+        let table = document.createElement('table')
+        
+      }
+
+      /* ESERCIZIO 12
+       Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
+    */
+
+      const addRow = function () {}
+
+      /* ESERCIZIO 14
+      Crea una funzione che nasconda le immagini della tabella quando eseguita
+    */
+
+      const hideAllImages = function () {}
+
+      /* EXTRA ESERCIZIO 15
+      Crea una funzione che cambi il colore del h2 con id "changeMyColor" con un colore random ad ogni click ricevuto
+    */
+
+      const changeColorWithRandom = function () {}
+    </script>
+  </body>
+</html>
