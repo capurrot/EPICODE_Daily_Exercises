@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EPICODE :: ToDo Application</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-    <h1>To Do List</h1>
-    <section class="input">
-        <input type="text" placeholder="Inserisci l'attività da svolgere..."/>
-        <button type="button">Aggiungi</button>
-    </section>
-    <section>
-        <ul></ul>
-    </section>
+    <main>
+        <h1>To Do List</h1>
+        <section class="input">
+            <form action="#" autocomplete="on">
+                <div>
+                    <input type="text" placeholder="Inserisci l'attività da svolgere..."/>
+                </div>
+                <div>
+                    <button type="button">Aggiungi</button>
+                    <button type="reset" id="reset">Pulisci</button>
+                </div>
+            </form>
+            <table></table>
+        </section>
+    </main>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
