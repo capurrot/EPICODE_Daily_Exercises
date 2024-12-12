@@ -7,7 +7,8 @@ let valueToDo = '';
 //Punto al bottone
 let button = document.querySelector("button");
 //Al click del bottone passo il valore di input.
-button.addEventListener("click", function() {
+button.addEventListener("click", function(e) {
+        e.preventDefault();
         valueToDo = inputToDo.value.trim();
         addRow();
 });
@@ -49,6 +50,7 @@ function addRow() {
             inputToDo.value = td.innerText
         }
         }
+    const monthNames = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
     function toComplete () {
         if (td.classList.contains('toComplete')) {
             td.classList.remove('toComplete')
@@ -56,7 +58,7 @@ function addRow() {
         } else {
             td.classList.add('toComplete');
             let dtComplete = document.createElement('span');
-            dtComplete.innerHTML = `Completato il: ${date.getDate()}-${date.getMonth()+1}-${date.getFullYear()}`;
+            dtComplete.innerHTML = `Completato il: ${date.getDate()} ${monthNames[date.getMonth()]} ${date.getFullYear()}`;
             td.appendChild(dtComplete);
         }
     }
