@@ -104,11 +104,11 @@ iframe {
 .badge {
     width: 5em;
     padding: 0.1em;
-    border: 2px solid #00A0C2;
+    border: 3px solid #00A0C2;
 }
 #badge {
     display: inline-block;
-    border: 2px solid #A32470;
+    border: 3px solid #A32470;
     height: 74px;
     margin: 0;
 }
@@ -261,5 +261,22 @@ footer a {
         width: 41%;
         margin-inline: auto;
         line-height: 2.5;
+    }
+}
+
+@media print {
+    body {
+        width: 100%;
+    }
+    main {
+        border: none;
+        box-shadow: none;
+
+    }
+    header, section, iframe, aside, footer {
+        display: none;
+    }
+    .badge > p {
+        display: inline;
     }
 }
